@@ -7,7 +7,6 @@ function ListingCard({listing}) {
 
   function handleDeleteClick(){
     onDelete(listing.id);
-
   }
 
   function handleFavoriteClick(){

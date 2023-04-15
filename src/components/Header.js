@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import Search from "./Search";
 
 function Header() {
+
   return (
     <header>
       <h1>
