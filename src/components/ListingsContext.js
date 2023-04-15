@@ -5,6 +5,7 @@ const ListingsContext = createContext();
 function ListingsProvider({children}){
 
   const [listings, setListings] = useState([]);
+  const [filter, setFilter] = useState('');
 
   useEffect( ()=> {
     fetch('http://localhost:6001/listings')
@@ -25,7 +26,9 @@ function ListingsProvider({children}){
   const context = {
     listings: listings, 
     setListings: setListings,
-    onDelete: handleDelete
+    onDelete: handleDelete,
+    filter: filter,
+    setFilter: setFilter
   }
 
   return (

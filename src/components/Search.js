@@ -4,11 +4,11 @@ import {ListingsContext} from './ListingsContext';
 
 function Search() {
   const [keyword, setKeyword] = useState('');
-  const {listings, setListings} = useContext(ListingsContext);
+  const {setFilter} = useContext(ListingsContext);
 
   function handleSubmit(e) {
     e.preventDefault();
-    setListings(listings.filter(l => l.description.match(keyword)));
+    setFilter(keyword);
   }
 
   return (

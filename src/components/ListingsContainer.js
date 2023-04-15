@@ -4,12 +4,12 @@ import {ListingsContext} from "./ListingsContext";
 
 function ListingsContainer() {
 
-  const {listings} = useContext(ListingsContext);
+  const {listings, filter} = useContext(ListingsContext);
   
   return (
     <main>
       <ul className="cards">
-        {listings.map(listing => (<ListingCard key={listing.id} listing={listing} />))}
+        {listings.filter(l => filter === '' || l.description.match(filter)).map(listing => (<ListingCard key={listing.id} listing={listing} />))}
       </ul>
     </main>
   );
