@@ -1,7 +1,14 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
+import {ListingsContext} from './ListingsContext';
 
 function ListingCard({listing}) {
   const [isFavorited, setIsFavorited] = useState(true);
+  const {onDelete} = useContext(ListingsContext);
+
+  function handleDeleteClick(){
+    onDelete(listing.id);
+
+  }
 
   function handleFavoriteClick(){
     setIsFavorited(!isFavorited);
@@ -21,7 +28,7 @@ function ListingCard({listing}) {
         )}
         <strong>{listing.description}</strong>
         <span> · {listing.location}</span>
-        <button className="emoji-button delete">🗑</button>
+        <button onClick={handleDeleteClick} className="emoji-button delete">🗑</button>
       </div>
     </li>
   );

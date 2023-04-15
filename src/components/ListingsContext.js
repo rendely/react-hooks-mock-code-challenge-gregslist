@@ -12,11 +12,25 @@ function ListingsProvider({children}){
     .then(d => setListings(d))
   }
   ,[]
-  )
+  );
+
+  function handleDelete(id){
+    fetch('http://localhost:6001/listings/'+id, {method: "DELETE"})
+    .then(r => r.json())
+    .then(() => console.log('deleted'))
+
+    setListings(listings.filter(l => l.id !== id));
+  }
+
+  const context = {
+    listings: listings, 
+    setListings: setListings,
+    onDelete: handleDelete
+  }
 
   return (
      <ListingsContext.Provider 
-      value={{listings: listings, setListings: setListings}}>
+      value={context}>
       {children}
      </ListingsContext.Provider>
   )
